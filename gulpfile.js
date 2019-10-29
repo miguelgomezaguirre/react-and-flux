@@ -15,6 +15,7 @@ var config = {
     path: {
         html: './src/*.html',
         js: './src/**/*.js',
+        images: './src/images/*.png',
         indexJs: './src/index.js',
         css: './node_modules/bootstrap/dist/css/bootstrap.min.css',
         dist: './dist'
@@ -70,4 +71,10 @@ gulp.task('eslint', function() {
         .pipe(eslint.format())
 })
 
-gulp.task('default', gulp.parallel('html', 'open', 'watch', 'js', 'css', 'eslint'));
+gulp.task('images', function() {
+    gulp.src(config.path.images)
+        .pipe(gulp.dest(config.path.dist + '/images'))
+        .pipe(conn.reload())
+})
+
+gulp.task('default', gulp.parallel('html', 'open', 'watch', 'js', 'css', 'eslint', 'images'));
