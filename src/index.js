@@ -17,7 +17,7 @@ var App = createReactClass({
                 break;
             case "recipe": 
                 Child = Recipes;
-                break;
+                break;  
             default:
                 Child = Home;
         }
